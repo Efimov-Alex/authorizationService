@@ -1,5 +1,9 @@
 package ru.netology.authorizationservice.service;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import ru.netology.authorizationservice.Authorities;
 import ru.netology.authorizationservice.exception.InvalidCredentials;
 import ru.netology.authorizationservice.exception.UnauthorizedUser;
@@ -9,7 +13,7 @@ import ru.netology.authorizationservice.repository.UserRepository;
 import java.util.List;
 
 public class AuthorizationService {
-    UserRepository userRepository;
+    private final UserRepository userRepository;
 
     public AuthorizationService(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -33,4 +37,6 @@ public class AuthorizationService {
     private boolean isEmpty(List<?> str) {
         return str == null || str.isEmpty();
     }
+
+
 }
